@@ -1,0 +1,829 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>гифтШоп</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,900,700,500' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="images/logo.png" type="image/gif" sizes="16x16">
+    <!--- start-mmmenu-script---->
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+    <script type="text/javascript" src="js/jquery.mmenu.js"></script>
+    <script type="text/javascript">
+        //	The menu on the left
+        $(function () {
+            $('nav#menu-left').mmenu();
+        });
+    </script>
+    <!-- start slider -->
+    <link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery.eislideshow.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script src="js/js.cookie.js"></script>
+
+    <!-- start top_js_button -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+</head>
+<body>
+    <!-- start header -->
+    <div class="top_bg">
+        <div class="wrap">
+            <div class="header">
+              <!--
+
+              <div class="logo">
+                    <a href="doma.html"><img src="images/finki-logo.png" alt="" width="200" height="60" /></a>
+                </div>
+
+                -->
+                <div class="header_right">
+                    <ul>
+                        <li><a href="" onclick="LoadBucketDetails(); return false;"><i class="cart"></i><span id="numBucketSouvenirs">0</span></a></li>
+
+                    </ul>
+                </div>
+                <div class="log_reg">
+                    <ul id="ulUserOptions">
+                        <li><a href="" onclick="LoadLogin(); return false;">Најави се</a> </li>
+                        <!--<span class="log"> / </span>-->
+                        <li><a href="" onclick="LoadRegistration(); return false;">Регистрација</a> </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <ul id="ulUserLoggedIn" style="display:none">
+                        <li><a id="spnUserName"></a></li>
+                        <li><a href="" id="userLogOut" onclick="LogOut(); return false;">Одјави се</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- start header_btm -->
+    <div class="wrap">
+        <div class="header_btm">
+            <div class="logo">
+                <a href="doma.html"><img src="images/finki-logo0.png" alt="" width="200" height="60" /></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="active"><a href="" onclick="LoadHome(); return false;">Дома</a></li>
+                    <li id="categories">
+                        <a href="" onclick="LoadSouvenirs(); return false;">Категории</a>
+                        <ul id="ulCategories"></ul>
+                    </li>
+                    <li><a href="" onclick="LoadAboutUs(); return false;">За нас</a></li>
+                    <li><a href="" onclick="LoadContact(); return false;">Контакт</a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div id="smart_nav">
+                <a class="navicon" href="#menu-left"> </a>
+            </div>
+            <nav id="menu-left">
+                <ul>
+                    <li><a href="doma.html">Дома</a></li>
+                    <li>
+                        <a href="" onclick="LoadSouvenirs(); return false;">Категории</a>
+                        <ul id="ulresCategories"></ul>
+                    </li>
+                    <li><a href="" onclick="LoadAboutUs(); return false;">За нас</a></li>
+                    <li><a href="" onclick="LoadContact(); return false;">Контакт</a></li>
+                    <div class="clear"></div>
+                </ul>
+            </nav>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="homeContent">
+        <!-- start slider -->
+        <div class="slider">
+            <!---start-image-slider---->
+            <div class="image-slider">
+                <div class="wrapper">
+                    <div id="ei-slider" class="ei-slider">
+
+                        <ul class="ei-slider-large">
+                            <li>
+                                <img src="images/1.jpg" alt="image06" />
+                                <div class="ei-title"
+                                     style=" padding: 30px;background-color: #ffffff; opacity: 0.6; filter: alpha(opacity=60); border-radius: 20px">
+                                    <h2>floor mat<br>Fact num.1:</h2>
+                                    <h3 class="active">
+                                        There is no place <br>
+                                        like 127.0.0.1.
+                                    </h3>
+
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/2.png" alt="image01" />
+                                <div class="ei-title"
+                                     style=" padding: 30px;background-color: #ffffff; opacity: 0.6; filter: alpha(opacity=60); border-radius: 20px">
+
+                                    <h2>programmer joke: <br> ! false</h2>
+                                    <h3 class="active">
+                                        It's funny <br>
+                                        because it is true.
+                                    </h3>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/3.png" alt="image02" />
+                                <div class="ei-title"
+                                     style=" padding: 30px;background-color: #ffffff; opacity: 0.6; filter: alpha(opacity=60); border-radius: 20px">
+                                    <h2>Banana banana banana <br> Placeholder text </h2>
+                                    <h3 class="active">
+                                        in code that hasn't been implemented yet.<br>
+
+                                    </h3>
+
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <img src="images/4.jpeg" alt="image03" />
+                                <div class="ei-title"
+                                     style=" padding: 30px;background-color: #ffffff; opacity: 0.6; filter: alpha(opacity=60); border-radius: 20px">
+                                    <h2>Hydra:<br> A bug that, </h2>
+                                    <h3 class="active">
+                                        when an attempt to fix is made, introduces two new bugs.<br>
+                                        It's a bug that cannot be fixed.
+                                    </h3>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/5.jpg" alt="image04" />
+                                <div class="ei-title" style=" padding: 30px;background-color: #ffffff; opacity: 0.6; filter: alpha(opacity=60); border-radius: 20px">
+                                    <h2>A duck:<br> A feature added</h2>
+                                    <h3 class="active">
+                                        for the sole purpose of drawing attention to itself from management to be removed,<br>
+                                        avoiding unnecessary other changes in a product.
+                                    </h3>
+                                </div>
+                            </li>
+
+                        </ul><!-- ei-slider-large -->
+                        <ul class="ei-slider-thumbs">
+                            <li class="ei-slider-element">Current</li>
+                            <li>
+                                <a href="">
+                                    <span class="active"></span>
+                                </a>
+                            </li>
+                            <li class="hide1"><a href=""><span></span></a></li>
+                            <li class="hide1"><a href=""><span></span></a></li>
+                            <li class="hide1"><a href=""><span></span> </a></li>
+                            <li><a href=""><span></span></a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start image1_of_3 -->
+        <div class="top_bg">
+            <div class="wrap">
+                <div class="main1">
+                    <div class="image1_of_3" style="margin-left:200px;">
+                        <img src="images/f_pic5.jpg" alt="" width="200" height="300"/>
+                        <a href="" onclick="LoadSouvenirsOnSale(); return false;"><span class="tag">попуст</span></a>
+                    </div>
+                    <div class="image1_of_3">
+                        <img src="images/f_pic6.jpg" alt="" width="200" height="300"/>
+                        <a href="" onclick="LoadRecommendedSouvenirs(); return false;"><span class="tag">препорачуваме</span></a>
+                    </div>
+                    <!--<div class="image1_of_3">
+                        <img src="images/img3.jpg" alt="" />
+                        <a href="kategorii.html"><span class="tag">мора да се има</span></a>
+                    </div>-->
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <!-- start main -->
+        <div class="main_bg">
+            <div class="wrap">
+                <div class="main">
+                    <div class="top_main">
+                        <h2>ново</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <!-- start grids_of_3 -->
+                    <div class="grids_of_3" id="souvenirsMain">
+
+                    </div>
+
+
+                </div>
+
+                <div class="clear"></div>
+
+                <br><br>
+            </div>
+        </div>
+
+    </div>
+    <div id="mainContent" style="display:none"></div>
+    <!-- start footer -->
+    <div class="footer_mid">
+        <div class="wrap">
+            <div class="footer">
+                <div class="f_search">
+                    <form>
+                        <input type="text" value="" placeholder="Пребарувајте по содржина" />
+                        <input type="submit" value="" />
+                    </form>
+                </div>
+                <div class="soc_icons">
+                  
+                    <ul>
+                        <li><a href="https://www.facebook.com/FINKI.ukim.mk/"> <img typeof="foaf:Image" class="img-responsive" src="https://finki.ukim.mk/sites/default/files/02_facebook.png" alt="" width="40" height="40"></a></li>
+                        <li><a href="https://twitter.com/FINKIedu"> <img typeof="foaf:Image" class="img-responsive" src="https://finki.ukim.mk/sites/default/files/01_twitter.png" alt="" width="40" height="40"></a></li>
+                        <li><a href="http://www.linkedin.com/company/faculty-of-computer-science-and-engineering---skopje"> <img typeof="foaf:Image" class="img-responsive" src="https://finki.ukim.mk/sites/default/files/07_linkedin.png" alt="" width="40" height="40"></a></li>
+                        <li><a href="http://www.youtube.com/user/FINKIedu"> <img typeof="foaf:Image" class="img-responsive" src="https://finki.ukim.mk/sites/default/files/03_youtube.png" alt="" width="40" height="40"></a></li>
+                        <li><a href="https://www.flickr.com/photos/finki-cse/"> <img typeof="foaf:Image" class="img-responsive" src="https://finki.ukim.mk/sites/default/files/16_flickr.png" alt="" width="40" height="40"></a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer_bg">
+        <div class="wrap">
+            <div class="footer">
+                <div class="f_nav1">
+                    <ul>
+                        <li><a href="" onclick="LoadHome(); return false;">Дома /</a></li>
+
+
+                        <li><a href="" onclick="LoadContact(); return false;">Контакт</a></li>
+                    </ul>
+                </div>
+                <div class="copy">
+                    <p class="link"><span>© 2223 од Дрим Тим Вана Би, Скопје, 2017</a></span></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#ei-slider').eislideshow({
+                animation: 'center',
+                autoplay: true,
+                slideshow_interval: 3000,
+                titlesFactor: 0
+            });
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+            });
+            if (Cookies.get('login') != undefined) {
+                var getCookie = Cookies.get('login');
+                var parseCookie = jQuery.parseJSON(getCookie);
+                $('#ulUserOptions').hide();
+                $('#ulUserLoggedIn').show();
+                $('#spnUserName').text('Добредојде ' + parseCookie.Name);
+                $('#userLogOut').attr('user-id', parseCookie.Id);
+            }
+            if (Cookies.get('bucket') != undefined) {
+                var getBucket = Cookies.get('bucket');
+                var parseBucket = jQuery.parseJSON(getBucket);
+                $('#numBucketSouvenirs').text(parseBucket);
+            }
+            else $('#numBucketSouvenirs').text('0');
+            LoadCategories();
+            LoadSouvenirsHome();
+        });
+
+        function LoadCategories() {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    for (i = 0; i < data.length; i++) {
+                        $('#ulCategories').append('<li><a name="category" href="" id="' + data[i].Id + '">' + data[i].Title + '</a></li>');
+                        $('#ulresCategories').append('<li><a name="category" href="" id="' + data[i].Id + '">' + data[i].Title + '</a></li>');
+                    }
+                    $('a[name="category"]').unbind('click').click(LoadSouvenirsByCategory);
+                }
+            });
+        }
+        function LoadHome() {
+            $('#mainContent').hide();
+            $('#homeContent').show();
+            LoadSouvenirsHome();
+        }
+        function LoadAboutUs() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/za_nas.html');
+        }
+        function LoadContact() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kontakt.html');
+        }
+        function LoadSouvenirsHome() {
+            $('#souvenirsMain').empty();
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/SouvenirsFront',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var json = data;
+                    $.get('templates/souvenirTemplate.html?t=' + new Date(), function (data) {
+                        var souvenirTemplate = data;
+                        for (i = 0; i < json.length; i++) {
+                            var template = $('' + souvenirTemplate + '');
+                            $(template).find('a').andSelf().attr('data-id', json[i].Id);
+                            $(template).find('[data-bind="Picture"]').append('<img width="150" height="300" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                            $(template).find('[data-bind="Title"]').text(json[i].Title);
+                            $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                            if (json[i].Sale == true)
+                                template.append('<span class="price1 bg">попуст</span>');
+                            if (json[i].NumSamples == 0)
+                                template.append('<span class="price1 bg1">нема<br>залихи</span>');
+                            if (i == 3)
+                                template.append('<div class="clear"></div>');
+                            else
+                                $('#souvenirsMain').append(template);
+                        } 
+                        $('a[data-id]').click(LoadSouvenirDetails);
+                    });
+                }
+            });
+        }
+        function LoadLogin() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/logiranje.html', function () {
+                $('#btnLogIn').click(LogIn);
+            });
+        }
+        function LogIn() {
+            var userLogIn = { Email: $('#logUserEmail').val(), Password: $('#logUserPassword').val() }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/LogIn',
+                type: 'POST',
+                dataType: 'json',
+                data: userLogIn,
+                success: function (data) {
+                    if (data == 'WrongPassword')
+                        $('#errorMsg').text('Погрешна лозинка!');
+                    else if (data == 'NotExist')
+                        $('#errorMsg').text('За да се најавите прво треба да се регистрирате!');
+                    else {
+                        //var login = jQuery.parseJSON(data);
+                        Cookies.set('login', data);
+                        var getCookie = Cookies.get('login');
+                        var parseCookie = jQuery.parseJSON(getCookie);
+                        $('#homeContent').show();
+                        $('#mainContent').hide();
+                        $('#ulUserOptions').hide();
+                        $('#ulUserLoggedIn').show();
+                        $('#spnUserName').text('Добредојде ' + parseCookie.Name);
+                        $('#userLogOut').attr('user-id', parseCookie.Id);
+                    }
+                }
+            });
+            return false;
+        }
+
+        function LogOut() {
+            Cookies.remove('login');
+            Cookies.remove('bucket');
+            $('#numBucketSouvenirs').text('0');
+            $('#homeContent').show();
+            $('#mainContent').hide();
+            $('#ulUserOptions').show();
+            $('#ulUserLoggedIn').hide();
+        }
+        function LoadRegistration() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/registracija.html', function () {
+                $('#registerSubmit').click(RegisterUser);
+                $('#btnRegLogin').click(RegLogIn);
+            });
+        }
+        function RegLogIn() {
+            var userRegLogIn = { Email: $('#regEmail').val(), Password: $('#regPass').val() }
+            console.debug(userRegLogIn);
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/LogIn',
+                type: 'POST',
+                dataType: 'json',
+                data: userRegLogIn,
+                success: function (data) {
+                    if (data == 'WrongPassword')
+                        $('#errorRegMsg').text('Погрешна лозинка!');
+                    else if (data == 'NotExist')
+                        $('#errorRegMsg').text('За да се најавите прво треба да се регистрирате!');
+                    else {
+                        //var login = jQuery.parseJSON(data);
+                        Cookies.set('login', data);
+                        var getCookie = Cookies.get('login');
+                        var parseCookie = jQuery.parseJSON(getCookie);
+                        $('#homeContent').show();
+                        $('#mainContent').hide();
+                        $('#ulUserOptions').hide();
+                        $('#ulUserLoggedIn').show();
+                        $('#spnUserName').text('Добредојде ' + parseCookie.Name);
+                        $('#userLogOut').attr('user-id', parseCookie.Id);
+                    }
+                }
+            });
+            return false;
+        }
+        function RegisterUser() {
+            var user = {
+                Name: $('#tbUserName').val(), Surname: $('#tbUserSurname').val(),
+                Email: $('#tbUserEmail').val(), Password: $('#tbUserPassword').val(),
+            }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Users',
+                type: 'POST',
+                dataType: 'json',
+                data: user,
+                success: function (data) {
+                    if (($('#tbUserName').val() || $('#tbUserSurname').val() || $('#tbUserEmail').val() || $('#tbUserPassword').val()) == null) {
+                        $('#infoMessage').text('Внесете ги соодветните податоци!');
+                        $('#infoMessage').css('color', 'red');
+                    }
+                    if (data == 'NotOk') {
+                        $('#infoMessage').text('Веќе постои корисник регистриран на оваа е-маил адреса!');
+                        $('#infoMessage').css('color', 'red');
+                    }
+                    else {
+                        $('#frmReg').hide();
+                        $('#infoMessage').text('Успешно се регистриравте!');
+                        $('#infoMessage').css('color', '#C0288B');
+                    }
+                }
+            });
+            return false;
+        }
+        function LoadSouvenirs() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kategorii.html', function () {
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/Souvenirs',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirTemplate = data;
+                            for (i = 0; i < json.length; i++) {
+                                var template = $('' + souvenirTemplate + '');
+                                $(template).find('a').andSelf().attr('data-id', json[i].Id);
+                                $(template).find('[data-bind="Picture"]').append('<img width="150" height="300" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                                if (json[i].Sale == true)
+                                    template.append('<span class="price1 bg">попуст</span>');
+                                if (json[i].NumSamples == 0)
+                                    template.append('<span class="price1 bg1">нема<br>залихи</span>');
+                                if (i == 3)
+                                    template.append('<div class="clear"></div>');
+                                $('#allSouvenirs').append(template);
+                            }
+                            $('a[data-id]').click(LoadSouvenirDetails);
+                        });
+                    }
+                });
+            });
+        }
+        function LoadSouvenirsByCategory() {
+            var categoryId = $(this).attr('id');
+            var title = this.text;
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kategorii.html', function () {
+                $('#catTitle').text(title);
+                $('#allSouvenirs').empty();
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/SouvenirsByCategory/' + categoryId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirTemplate = data;
+                            for (i = 0; i < json.length; i++) {
+                                var template = $('' + souvenirTemplate + '');
+                                $(template).find('a').andSelf().attr('data-id', json[i].Id);
+                                $(template).find('[data-bind="Picture"]').append('<img width="150" height="300" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                                if (json[i].Sale == true)
+                                    template.append('<span class="price1 bg">попуст</span>');
+                                if (json[i].NumSamples == 0)
+                                    template.append('<span class="price1 bg1">нема<br>залихи</span>');
+                                if (i == 3)
+                                    template.append('<div class="clear"></div>');
+                                $('#allSouvenirs').append(template);
+                            }
+                            $('a[data-id]').click(LoadSouvenirDetails);
+                        });
+                    }
+                });
+            });
+            return false;
+        }
+        function LoadSouvenirsOnSale() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kategorii.html', function () {
+                $('#catTitle').text('Сувенири на попуст');
+                $('#allSouvenirs').empty();
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/SouvenirsOnSale',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirTemplate = data;
+                            for (i = 0; i < json.length; i++) {
+                                var template = $('' + souvenirTemplate + '');
+                                $(template).find('a').andSelf().attr('data-id', json[i].Id);
+                                $(template).find('[data-bind="Picture"]').append('<img width="150" height="300" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                                if (json[i].Sale == true)
+                                    template.append('<span class="price1 bg">попуст</span>');
+                                if (json[i].NumSamples == 0)
+                                    template.append('<span class="price1 bg1">нема<br>залихи</span>');
+                                if (i == 3)
+                                    template.append('<div class="clear"></div>');
+                                $('#allSouvenirs').append(template);
+                            }
+                            $('a[data-id]').click(LoadSouvenirDetails);
+                        });
+                    }
+                });
+            });
+            return false;
+        }
+        function LoadRecommendedSouvenirs() {
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kategorii.html', function () {
+                $('#catTitle').text('Препорачуваме');
+                $('#allSouvenirs').empty();
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/RecommendedSouvenirs',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirTemplate = data;
+                            for (i = 0; i < json.length; i++) {
+                                var template = $('' + souvenirTemplate + '');
+                                $(template).find('a').andSelf().attr('data-id', json[i].Id);
+                                $(template).find('[data-bind="Picture"]').append('<img width="150" height="300" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                                if (json[i].Sale == true)
+                                    template.append('<span class="price1 bg">попуст</span>');
+                                if (json[i].NumSamples == 0)
+                                    template.append('<span class="price1 bg1">нема<br>залихи</span>');
+                                if (i == 3)
+                                    template.append('<div class="clear"></div>');
+                                $('#allSouvenirs').append(template);
+                            }
+                            $('a[data-id]').click(LoadSouvenirDetails);
+                        });
+                    }
+                });
+            });
+            return false;
+        }
+        function LoadSouvenirDetails() {
+            var souvenirId = $(this).attr('data-id');
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/detali.html', function () {
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/Souvenirs/' + souvenirId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#hfSouvenirId').val(data.Id);
+                        console.debug(data.Id);
+                        $('[data-bind="Picture"]').append('<img width="290" height="450" src="/dataFiles/' + data.Folder + '/1.jpg"/>');
+                        $('[data-bind="Title"]').text(data.Title);
+                        $('[data-bind="Price"]').text(data.Price + 'денари');
+                        $('[data-bind="Author"]').text(data.Author);
+                        $('[data-bind="NumPages"]').text(data.NumPages);
+                        if (data.Cover == 0)
+                            $('[data-bind="Cover"]').text('');
+                        else
+                            $('[data-bind="Cover"]').text('');
+                        if (data.Sale == true) {
+                            $('#price').css('text-decoration', 'line-through');
+                            $('[data-bind="NewPrice"]').text(data.NewPrice + 'денари');
+                        }
+                        $('[data-bind="Description"]').text(data.Description);
+                        if (data.NumSamples == 0) {
+                            $('#btnAddToBucket').prop('disabled', true);
+                            $('#btnAddToBucket').css('background', '#a7a4a4');
+                            $('#btnAddToBucket').css('border-color', '#a7a4a4');
+                        }
+                        $('#btnAddToBucket').click(function () {
+                            if (Cookies.get('login') != undefined){
+                                AddToBucket();
+                                return false;
+                            }
+                            else{
+                                LoadRegistration();
+                                return false;
+                            }
+                        });
+                    }
+                });
+                LoadCategoriesInSouvenirDetails();
+
+            });
+            return false;
+        }
+        function LoadCategoriesInSouvenirDetails() {
+            $('#catDetails').empty();
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    for (i = 0; i < data.length; i++) {
+                        $('#catDetails').append('<li><a name="category" href="" id="' + data[i].Id + '">' + data[i].Title + '</a></li>');
+                    }
+                    $('a[name="category"]').unbind('click').click(LoadSouvenirsByCategory);
+                }
+            });
+        }
+        
+        function AddToBucket() {
+            var souvenirId = $('#hfSouvenirId').val();
+            var getCookie = Cookies.get('login');
+            var parseCookie = jQuery.parseJSON(getCookie);
+            var souvenirInBucket = {
+                UserName: parseCookie.Name, UserSurname: parseCookie.Surname,
+                Address: '', Delivered: false, SouvenirId: souvenirId, InBucket: true, Buy: true
+            }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/AddToBucket',
+                type: 'POST',
+                dataType: 'json',
+                data: souvenirInBucket,
+                success: function (data) {
+                    $('#numBucketSouvenirs').text(data);
+                    console.debug(data);
+                    Cookies.set('bucket', data);
+                }
+            });
+            return false;
+        }
+        var souvenirIds = [];
+        var boughtSouvenirsIds = [];
+        function LoadBucketDetails() {
+            var getCookie = Cookies.get('login');
+            var parseCookie = jQuery.parseJSON(getCookie);
+            $('#homeContent').hide();
+            $('#mainContent').show();
+            $('#mainContent').empty();
+            $('#mainContent').load('views/kosnicka.html', function () {
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/GetSouvenirsFromBucket/' + parseCookie.Name,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirFromBucketTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirFromBucketTemplate = data;
+                            for (i = 0; i < json.length; i++) {
+                                if (jQuery.inArray(json[i].Id, souvenirIds)) {
+                                    souvenirIds.push(json[i].SouvenirId);
+                                    boughtSouvenirsIds.push(json[i].Id);
+                                }
+                                console.debug(souvenirIds);
+                                $('#allPrices').text(json[i].AllPrices + ' денари');
+                                var template = $('' + souvenirFromBucketTemplate + '');
+                                $(template).find('[data-bind="Picture"]').append('<img width="76" height="76" src="/dataFiles/' + json[i].Folder + '/1.jpg"/>');
+                                $(template).find('#spnRemove').attr('data-souvenirid', json[i].SouvenirId);
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[data-bind="Title"]').attr('data-id', json[i].Id);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' денари');
+                                if (json[i].Sale) {
+                                    $(template).find('#priceOfTheSouvenir').addClass('line');
+                                    $(template).find('[data-bind="NewPrice"]').text(json[i].NewPrice);
+                                }
+                                $('#souvenirsFromBucket').append(template);
+                            }
+                            $('#spnRemove').click(RemoveFromBucket);
+                        });
+                        
+                        $('#btnPay').click(PayTheSouvenirs);
+                    }
+                });
+            });
+        }
+        function RemoveFromBucket() {
+            console.log($(this).attr('data-souvenirid'));
+            var souvenirId = $(this).attr('data-souvenirid');
+            souvenirIds = [];
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/RemoveSouvenirFromBucket/' + souvenirId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#numBucketSouvenirs').text(data);
+                    console.debug(data);
+                    Cookies.set('bucket', data);
+                    LoadBucketDetails();
+                }
+            });
+            return false;
+        }
+
+        function PayTheSouvenirs() {
+            var getCookie = Cookies.get('login');
+            var parseCookie = jQuery.parseJSON(getCookie);
+            for (i = 0; i < boughtSouvenirsIds.length; i++) {
+                var boughtSouvenirs = {
+                    Id: boughtSouvenirsIds[i],
+                    Name: parseCookie.Name,
+                    Address: $('#userAddress').val()
+                }
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/BoughtSouvenirs',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: boughtSouvenirs,
+                    success: function (data) {
+                        $('#numBucketSouvenirs').text('0');
+                        $('#allPrices').text('');
+                        Cookies.set('bucket', 0);
+                        $('#souvenirsFromBucket').empty();
+                        $('input[type="text"]').val('');
+                    }
+
+                });
+            }
+            //LoadBucketDetails();
+            
+            // Get the modal
+            var modal = document.getElementById('myModalNeuspesen');
+
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("btnPay");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            modal.style.display = "block";
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";                
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            
+            return false;
+            
+        }
+    </script>
+</body>
+</html>

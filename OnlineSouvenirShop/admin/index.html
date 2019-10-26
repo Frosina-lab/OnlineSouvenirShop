@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Souvenir Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link href="dropzone/basic.css" rel="stylesheet" />
+    <link href="dropzone/dropzone.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1><a href="index.html">Admin Panel</a></h1>
+                    </div>
+                </div>
+                <!--<div class="col-md-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="navbar navbar-inverse" role="banner">
+                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                                    <ul class="dropdown-menu animated fadeInUp">
+                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="login.html">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar content-box" style="display: block;">
+                    <ul class="nav">
+                        <!-- Main menu -->
+                        <li><a href="#" onclick="LoadDashboard(); return false"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                        <li><a href="#" onclick="LoadCategories(); return false"><i class="glyphicon glyphicon-th-list"></i> Categories </a></li>
+                        <li><a href="#" onclick="LoadSouvenirs(); return false"><i class="glyphicon glyphicon-book"></i> Souvenirs</a></li>
+                        <li><a href="#" onclick="Logout(); return false"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                        <!--<li><a href="#" onclick="LoadSliderView(); return false"><i class="glyphicon glyphicon-picture"></i> Slider</a></li>-->
+                        <!--<li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
+                        <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
+                        <li class="current"><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
+                        <li class="submenu">
+                             <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Pages
+                                <span class="caret pull-right"></span>
+                             </a>
+
+                             <ul>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="signup.html">Signup</a></li>
+                            </ul>
+                        </li>-->
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10" id="mainContent">
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+
+            <div class="copy text-center">
+                Copyright 2014 <a href='#'>Website</a>
+            </div>
+
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="bootstrap-notify-3.1.3/bootstrap-notify.min.js"></script>
+    <script src="dropzone/dropzone.js"></script>
+    <script src="js/bootstrap-dialog.js"></script>
+    <script src="/front/js/js.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            
+            if (Cookies.get('adminlogin') == undefined) {
+                console.debug(Cookies.get('adminlogin'))
+                window.location.href = location.protocol + '//' + location.host + '/admin/login.html'
+            }
+            else LoadDashboard();
+        });
+
+        function Logout() {
+            Cookies.remove('adminlogin');
+            window.location.href = location.protocol + '//' + location.host + '/admin/login.html'
+        }
+
+        function LoadDashboard() {
+            $('#mainContent').empty();
+            $('#mainContent').load('views/dashboardView.html', function () {
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/GetBoughtSouvenirs',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/boughtSouvenirsTemplate.html?t=' + new Date(), function (data) {
+                            var boughtSouvenirTemplate = data;
+                            //var order = 1;
+                            for (i = 0; i < json.length; i++) {
+                                //console.debug(json.length);
+                                var template = $('' + boughtSouvenirTemplate + '');
+                                //$(template).find('[data-bind="Order"]').text(order);
+                                $(template).find('[data-bind="UserName"]').text(json[i].UserName);
+                                $(template).find('[data-bind="UserSurname"]').text(json[i].UserSurname);
+                                $(template).find('[data-bind="UserAddress"]').text(json[i].UserAddress);
+                                $(template).find('[name="chbForDelivery"]').attr('data-username', json[i].UserName);
+                                $('#souvenirsForDeliveryTableBody').append(template);
+                                for (j = 0; j < json[i].BoughtSouvenirs.length; j++) {
+                                    //console.debug(json[i].BoughtSouvenirs[j]);
+                                    $('#souvenirsForDeliveryTableBody')
+                                        .append('<tr><td>' + json[i].BoughtSouvenirs[j] + '</td><td></td><td></td><td></td><td></td></tr>');
+                                }
+                                //order++;
+                            }
+                            $('[name="chbForDelivery"]').click(SetDelivered);
+                            LoadDeliveredSouvenirs();
+                        });
+                    }
+                });
+            });
+        }
+        function SetDelivered() {
+            var userName = $(this).attr('data-username');
+            console.debug(userName);
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/SetDelivered/' + userName,
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    console.debug('success');
+                    LoadDashboard();
+                }
+            });
+        }
+        function LoadDeliveredSouvenirs() {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/GetDeliveredSouvenirs',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var json = data;
+                    $.get('templates/boughtSouvenirsTemplate.html?t=' + new Date(), function (data) {
+                        var boughtSouvenirTemplate = data;
+                        //var order = 1;
+                        for (i = 0; i < json.length; i++) {
+                            var template = $('' + boughtSouvenirTemplate + '');
+                            //$(template).find('[data-bind="Order"]').text(order);
+                            $(template).find('[data-bind="UserName"]').text(json[i].UserName);
+                            $(template).find('[data-bind="UserSurname"]').text(json[i].UserSurname);
+                            $(template).find('[data-bind="UserAddress"]').text(json[i].UserAddress);
+                            $(template).find('[name="chbForDelivery"]').hide();
+                            $('#deliveredSouvenirsTableBody').append(template);
+                            for (j = 0; j < json[i].BoughtSouvenirs.length; j++) {
+                                $('#deliveredSouvenirsTableBody')
+                                    .append('<tr><td>' + json[i].BoughtSouvenirs[j] + '</td><td></td><td></td><td></td><td></td></tr>');
+                            }
+                            //order++;
+                        }
+                    });
+                }
+            });
+        }
+        function LoadCategories() {
+            $('#mainContent').empty();
+            $('#mainContent').load('views/categoriesView.html', function () {
+                $('#addCategory').attr('data-id', 0);
+                $('#addCategory').click(LoadCategoryForm);
+                $('#categoriesTableBody').empty();
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/Categories',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/categoriesTableTemplate.html?t=' + new Date(), function (data) {
+                            var categoryTemplate = data;
+                            var order = 1;
+                            for (i = 0; i < json.length; i++) {
+                                var template = $('' + categoryTemplate + '');
+                                $(template).find('[data-bind="Order"]').text(order);
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                $(template).find('[name="categoryId"]').attr('data-id', json[i].Id);
+                                $('#categoriesTableBody').append(template);
+                                order++;
+                            }
+                            $('.glyphicon-pencil').click(LoadCategoryForm);
+                            $('.glyphicon-remove').click(DeleteCategoryDialog);
+                        });
+                    }
+                });              
+            });
+        }
+        function LoadCategoryForm() {
+            var categoryId = $(this).attr('data-id');
+            $('#mainContent').empty();
+            $('#mainContent').load('forms/categoryForm.html', function () {
+                if (categoryId != 0) {
+                    $('#pnlTitle').text('Edit Category');
+                    LoadCategoryDetails(categoryId);
+                }
+                else
+                    $('#pnlTitle').text('Add Category');
+                $('#btnAddCategory').click(function () {
+                    SaveCategory(categoryId);
+                });
+            });
+        }
+        function LoadCategoryDetails(categoryId) {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories/' + categoryId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#tbCategoryTitle').val(data.Title);
+                    $('#btnAddCategory').attr('data-id', data.Id);
+                }
+            });
+        }
+        function SaveCategory(categoryId) {
+            if (categoryId != 0)
+                EditCategory(categoryId);
+            else
+                AddCategory();
+        }
+        function AddCategory() {
+            var addCategory = { Title: $('#tbCategoryTitle').val(), Deleted: false }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories',
+                type: 'POST',
+                dataType: 'json',
+                data: addCategory,
+                success: function () {                    
+                    LoadCategories();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This category is successfully added!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            });
+        }
+        function EditCategory(categoryId) {
+            var editCategory = { Id: categoryId, Title: $('#tbCategoryTitle').val(), Deleted: false }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories/' + categoryId,
+                type: 'PUT',
+                dataType: 'json',
+                data: editCategory,
+                success: function () {
+                    LoadCategories();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This category is successfully edited!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            });
+        }
+        function DeleteCategoryDialog() {
+            var categoryId = $(this).attr('data-id');
+            BootstrapDialog.show({
+                message: 'Are you sure you want to delete it!',
+                buttons: [{
+                    label: 'yes',
+                    cssClass: 'btn-primary',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                        DeleteCategory(categoryId);
+                    }
+                }, {
+                    label: 'no',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                    }
+                }]
+            });
+        }
+        function DeleteCategory(categoryId) {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories/' + categoryId,
+                type: 'DELETE',
+                dataType: 'json',
+                success: function () {
+                    LoadCategories();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This category is successfully deleted!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            });
+        }
+        function LoadSouvenirs() {
+            $('#mainContent').empty();
+            $('#mainContent').load('views/souvenirsView.html', function () {
+                $('#addSouvenir').attr('data-id', 0);
+                $('#addSouvenir').click(LoadSouvenirForm);
+                $('#souvenirsTableBody').empty();
+                $.ajax({
+                    url: location.protocol + '//' + location.host + '/api/Souvenirs',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var json = data;
+                        $.get('templates/souvenirTableTemplate.html?t=' + new Date(), function (data) {
+                            var souvenirTemplate = data;
+                            var order = 1;
+                            for (i = 0; i < json.length; i++) {
+                                
+                                var template = $('' + souvenirTemplate + '');
+                                $(template).find('[data-bind="Order"]').text(order);
+                                $(template).find('[data-bind="Title"]').text(json[i].Title);
+                                //$(template).find('[data-bind="Author"]').text(json[i].Author);
+                                $(template).find('[data-bind="Price"]').text(json[i].Price + ' denari');
+                                $(template).find('[name="souvenirId"]').attr('data-id', json[i].Id);
+                                $(template).find('[name="chbRecommended"]').attr('data-souvenirid', json[i].Id);
+                                if (json[i].Recommended)
+                                    $(template).find('[name="chbRecommended"]').attr('checked', true);
+                                $('#souvenirsTableBody').append(template);
+                                order++;
+                            }
+                            $('[name="chbRecommended"]').on('change', CheckRecommended);
+                            $('.glyphicon-pencil').click(LoadSouvenirForm);
+                            $('.glyphicon-remove').click(DeleteSouvenirDialog);
+                        });
+                    }
+                });
+            });
+        }
+        function CheckRecommended() {
+            var chbChecked = $(this).is(':checked');
+            var chbCheckedId = $(this).attr('data-souvenirid');
+            var chbDetails = { ChbChecked: chbChecked, ChbCheckedId: chbCheckedId }
+            console.debug(chbChecked);
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/SetRecommended',
+                type: 'POST',
+                dataType: 'json',
+                data: chbDetails,
+                success: function (data){ }
+            });
+        }
+        function LoadSouvenirForm() {
+            var souvenirId = $(this).attr('data-id');
+            $('#mainContent').empty();
+            $('#mainContent').load('forms/souvenirForm.html', function () {
+                $('#tbSaleprice').attr('readonly', true)
+                $('#chbSale').click(function () {
+                    if ($('#chbSale').is(':checked'))
+                        $('#tbSaleprice').attr('readonly', false);
+                    else
+                        $('#tbSaleprice').attr('readonly', true);
+                });
+                BindCategories();
+                if (souvenirId != 0){
+                    $('#pnlTitle').text('Edit Souvenir');
+                    LoadSouvenirDetails(souvenirId);
+                }
+                    
+                else {
+                    $('#pnlTitle').text('Add Souvenir');
+                    GetImagesFolder();
+                }
+                $('#btnAddSouvenir').click(function () {
+                    SaveSouvenir(souvenirId);
+                });
+            });
+        }
+        function BindCategories() {
+            $('#ddlCategories').empty();
+            $('#ddlCategories').append('<option value="" disabled selected>Select category</option>');
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Categories',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var json = data;
+                    for (i = 0; i < json.length; i++) {
+                        $('#ddlCategories').append($('<option>', {
+                            value: json[i].Id,
+                            text: json[i].Title
+                        }));
+                    }
+                }
+            });
+        }
+        function LoadSouvenirDetails(souvenirId) {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Souvenirs/' + souvenirId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#ddlCategories option[value="' + data.Category + '"]').prop('selected', true);
+                    $('#tbTitle').val(data.Title);
+                    $('#txtDescription').val(data.Description);
+                    //$('#tbAuthor').val(data.Author);
+                    $('#tbPrice').val(data.Price);
+                    //$('#tbNumPages').val(data.NumPages);
+                    $('#tbNumSamples').val(data.NumSamples);
+                    //$('#ddlCover option[value="' + data.Cover + '"]').prop('selected', true);
+                    if (data.Sale == true) {
+                        $('#chbSale').attr('checked', 'checked');
+                        $('#tbSaleprice').attr('readonly', false);
+                        $('#tbSaleprice').val(data.NewPrice);
+                    }
+                    $('#btnAddSouvenir').attr('data-id', data.Id);
+                    $('#folder').val(data.Folder);
+                    InitUploader(data.Folder);
+                    LoadImages(data.Folder);
+                }
+            });
+        }
+        function SaveSouvenir(souvenirId) {
+            if (souvenirId != 0)
+                EditSouvenir(souvenirId);
+            else
+                AddSouvenir();
+        }
+        function AddSouvenir() {
+            var addSouvenir = {
+                Title: $('#tbTitle').val(), Description: $('#txtDescription').val(),
+                Category: $('#ddlCategories').val(), Author: '',
+                Price: $('#tbPrice').val(), NumPages: 0,
+                Cover:0, Sale: $('#chbSale').is(':checked'),
+                NewPrice: $('#tbSaleprice').val(), NumSamples: $('#tbNumSamples').val(),
+                Folder: $('#folder').val(), Deleted: false
+            }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Souvenirs',
+                type: 'POST',
+                dataType: 'json',
+                data: addSouvenir,
+                success: function () {
+                    LoadSouvenirs();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This souvenir is successfully added!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            });
+        }
+        function EditSouvenir(souvenirId) {
+            var editSouvenir = {
+                Id: souvenirId, Title: $('#tbTitle').val(), Description: $('#txtDescription').val(),
+                Category: $('#ddlCategories').val(), Author: '',
+                Price: $('#tbPrice').val(), NumPages:0,
+                Cover: 0, Sale: $('#chbSale').is(':checked'),
+                NewPrice: $('#tbSaleprice').val(), NumSamples: $('#tbNumSamples').val(),
+                Folder: $('#folder').val(), Deleted: false
+            }
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Souvenirs/' + souvenirId,
+                type: 'PUT',
+                dataType: 'json',
+                data: editSouvenir,
+                success: function () {
+                    LoadSouvenirs();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This souvenir is successfully edited!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            });
+        }
+        function DeleteSouvenirDialog() {
+            var souvenirId = $(this).attr('data-id');
+            BootstrapDialog.show({
+                message: 'Are you sure you want to delete it!',
+                buttons: [{
+                    label: 'yes',
+                    cssClass: 'btn-primary',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                        DeleteSouvenir(souvenirId);
+                    }
+                }, {
+                    label: 'no',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                    }
+                }]
+            });
+        }
+        function DeleteSouvenir(souvenirId) {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/Souvenirs/' + souvenirId,
+                type: 'DELETE',
+                dataType: 'json',
+                success: function () {
+                    LoadSouvenirs();
+                    $.notify({
+                        icon: 'glyphicon glyphicon-ok',
+                        title: "<strong>Success</strong></br> ",
+                        message: "This souvenir is successfully deleted!"
+                    }, {
+                        type: 'success',
+                        delay: 1000
+                    });
+                }
+            })
+        }
+
+        //Upload Images
+        function InitUploader(folder) {
+            myDropzone = new Dropzone("#dropzoneForm", {
+                url: "/api/uploadFiles/" + folder,
+                maxFiles: 1,
+                addRemoveLinks: true
+            });
+            myDropzone.on('removedfile', function (file) {
+                DeleteImage(file.name);
+            });
+        }
+        function GetImagesFolder() {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/getFolderName',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data, statusText, xhr) {
+                    $('#folder').val(data);
+                    InitUploader(data);
+                }
+            });
+        }
+        function DeleteImage(fileName) {
+            $.ajax({
+                url: location.protocol + '//' + location.host + '/api/uploadFiles/' + $('#folder').val(),
+                type: 'DELETE',
+                dataType: 'json',
+                data: { "": fileName },
+                success: function (data, statusText, xhr) {
+                    console.debug('File Deleted');
+                }
+            });
+        }
+        function LoadImages(folder) {
+            $.ajax({
+                url: '/api/uploadFiles/' + folder,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var json = data;
+                    $.each(json, function (key, value) {
+
+                        var mockFile = { name: value, size: key };
+
+                        // Call the default addedfile event handler
+                        myDropzone.emit("addedfile", mockFile);
+
+                        // And optionally show the thumbnail of the file:
+                        myDropzone.emit("thumbnail", mockFile, "/dataFiles/" + folder + '/' + value);
+                        // Or if the file on your server is not yet in the right
+                        // size, you can let Dropzone download and resize it
+                        // callback and crossOrigin are optional.
+                        //myDropzone.createThumbnailFromUrl(file, imageUrl);
+
+                        // Make sure that there is no progress bar, etc...
+                        myDropzone.emit("complete", mockFile);
+
+                        // If you use the maxFiles option, make sure you adjust it to the
+                        // correct amount:
+                        var existingFileCount = 1; // The number of files already uploaded
+                        myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿
+<!-- start top_bg -->
+<!-- start top_bg -->
+<div class="top_bg">
+    <div class="wrap">
+        <div class="main_top">
+            <h2 class="style">Регистрирај се</h2>
+        </div>
+    </div>
+</div>
+<!-- start main -->
+<div class="main_bg">
+    <div class="wrap">
+        <div class="main">
+            <div class="login_left">
+                <h3>регистрирани купувачи</h3>
+                <p>Доколку имате корисничка сметка, лоирајте се</p>
+                <!-- start registration -->
+                <div class="registration">
+                   
+                    <div class="registration_left">
+
+                        <div class="registration_form">
+                            <!-- Form -->
+                            <form id="registration_form">
+                                <div>
+                                    <label style="width:100%">
+                                        <input placeholder="е-маил:" type="email" id="regEmail" tabindex="5" required="">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label style="width:100%">
+                                        <input placeholder="лозинка" type="password" id="regPass" tabindex="6" required="">
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="submit" value="најави се" id="btnRegLogin">
+                                </div>
+                                <p id="errorRegMsg" style="color:red"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="login_left">
+                <h3>регистрација на нови купувачи</h3>
+                <p id="infoMessage">Со креирањето на корисничка сметка во нашата онлајн продавница, Вие ќе бидете во можност да го пројдете процесот на нарачка, наплата и достава на производи поврзани со нашата продавница.</p>
+                <div class="registration_left" id="frmReg">
+                    <div class="registration_form">
+
+                        <form id="registration_form" action="contact.php" method="post">
+                            <div>
+                                <label style="width:100%">
+                                    <input placeholder="Име:" type="text" tabindex="1" required="внесете име"autofocus="" id="tbUserName">
+                                    <asp:RequiredFieldValidator runat="server" id="reqName" controltovalidate="txtName" errormessage="Please enter your name!" />
+                                </label>
+                            </div>
+                            <div>
+                                <label style="width:100%">
+                                    <input placeholder="Презиме:" type="text" tabindex="2" required="" autofocus="" id="tbUserSurname">
+                                </label>
+                            </div>
+                            <div>
+                                <label style="width:100%">
+                                    <input placeholder="Е-маил адреса:" type="email" tabindex="3" required="" id="tbUserEmail">
+                                </label>
+                            </div>
+                            <div>
+                                <label style="width:100%">
+                                    <input placeholder="Лозинка" type="password" tabindex="4" required="" id="tbUserPassword">
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="submit" value="Креирај сметка" id="registerSubmit">
+                            </div>
+                        </form>
+                        <!-- /Form -->
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

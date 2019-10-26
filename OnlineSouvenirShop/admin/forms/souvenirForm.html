@@ -1,0 +1,91 @@
+﻿<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="content-box-large">
+            <div class="panel-heading">
+                <div class="panel-title" id="pnlTitle"></div>
+            </div>
+            <div class="panel-body">
+                <form action="">
+                    <fieldset>
+                        <input type="hidden" id="folder" />
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-control" id="ddlCategories"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input class="form-control" placeholder="Enter Title" type="text" id="tbTitle">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" placeholder="Textarea" rows="4" id="txtDescription"></textarea>
+                        </div>
+                        <!--<div class="form-group">
+                            <label>Author</label>
+                            <input class="form-control" placeholder="Enter Author" type="text" id="tbAuthor">
+                        </div>-->
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" placeholder="Enter Price" type="text" id="tbPrice">
+                        </div>
+                        <!--<div class="form-group">
+                            <label>Number of pages</label>
+                            <input class="form-control" placeholder="Enter number of pages" type="text" id="tbNumPages">
+                        </div>-->
+                        <div class="form-group">
+                            <label>Number of samples</label> <!--ova da go ostavime a?-->
+                            <input class="form-control" placeholder="Enter number of samples" type="text" id="tbNumSamples">
+                        </div>
+                        <!--<div class="form-group">
+                            <label>Cover</label>
+                            <select class="form-control" id="ddlCover">
+                                <option value="" disabled selected>Cover type</option>
+                                <option value="0">Soft</option>
+                                <option value="1">Hard</option>
+                            </select>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="control-label" for="prepend">On Sale / Price</label> <!--i ova moze-->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="onoffswitch">
+                                                <input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="chbSale">
+                                                <label class="onoffswitch-label" for="chbSale">
+                                                </label>
+                                            </span>
+                                        </span>
+                                        <input class="form-control" placeholder="Enter sale price" id="tbSaleprice" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 card">
+                            <div class="card-title">
+                                <label>Photo</label>
+                                <div class="divider"></div>
+                            </div>
+                            <div class="card-content col s12">
+                                <div class="s12">
+                                    <div class="dropzone" id="dropzoneForm">
+                                        <div class="fallback">
+                                            <input name="file" type="file" />
+                                            <input type="submit" value="Upload" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div>
+                        <div class="btn btn-primary" id="btnAddSouvenir">
+                            <i class="fa fa-save"></i>
+                            Submit
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
